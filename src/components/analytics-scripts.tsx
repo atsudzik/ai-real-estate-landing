@@ -1,47 +1,49 @@
 "use client";
 
-import Link from "next/link";
-import { useLanguage } from "@/contexts/language-context";
+import Script from "next/script";
 
-export const BlogPageContent = () => {
-  const { translations } = useLanguage();
+const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
+const HOTJAR_ID = process.env.NEXT_PUBLIC_HOTJAR_ID;
+const HOTJAR_SV = process.env.NEXT_PUBLIC_HOTJAR_SV ?? "6";
+
+export const AnalyticsScripts = () => {
+  if (!GA_ID && !HOTJAR_ID) {
+    return null;
+  }
 
   return (
-    <main className="min-h-screen bg-slate-50">
-      <section className="section-wrapper">
-        <div className="card bg-accent-500/10">
-          <h1 className="text-4xl font-semibold text-slate-900 md:text-5xl">
-            {translations.blogPage.heroTitle}
-          </h1>
-          <p className="mt-4 max-w-2xl text-base text-slate-600 md:text-lg">
-            {translations.blogPage.heroSubtitle}
-          </p>
-          <Link
-            href="/newsletter"
-            className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-accent-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-500/30 transition hover:bg-accent-600"
-          >
-            {translations.blogPage.subscribeCta}
-          </Link>
-        </div>
-      </section>
-      <section className="section-wrapper pt-0">
-        <div className="grid gap-6 md:grid-cols-2">
-          {translations.blog.posts.map((post) => (
-            <article key={post.title} className="card flex h-full flex-col gap-4">
-              <span className="badge w-fit">{post.category}</span>
-              <h2 className="text-2xl font-semibold text-slate-900">{post.title}</h2>
-              <p className="text-sm text-slate-600">{post.excerpt}</p>
-              <Link
-                href={post.href}
-                className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-accent-600 hover:text-accent-500"
-              >
-                {translations.blog.readMore}
-                <span aria-hidden>→</span>
-              </Link>
-            </article>
-          ))}
-        </div>
-      </section>
-    </main>
+    <>
+      {GA_ID ? (
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+            strategy="afterInteractive"
+          />
+          <Script id="ga-init" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_ID}');
+            `}
+          </Script>
+        </>
+      ) : null}
+
+      {HOTJAR_ID ? (
+        <Script id="hotjar-init" strategy="afterInteractive">
+          {`
+            (function(h,o,t,j,a,r){
+                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                h._hjSettings={hjid:${HOTJAR_ID},hjsv:${HOTJAR_SV}};
+                a=o.getElementsByTagName('head')[0];
+                r=o.createElement('script');r.async=1;
+                r.src='https://static.hotjar.com/c/hotjar-'+h._hjSettings.hjid+'.js?sv='+h._hjSettings.hjsv;
+                a.appendChild(r);
+            })(window,document);
+          `}
+        </Script>
+      ) : null}
+    </>
   );
 };
