@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@layer theme {
+  @theme {
+    --color-accent-50: #eff6ff;
+    --color-accent-100: #dbeafe;
+    --color-accent-200: #bfdbfe;
+    --color-accent-300: #93c5fd;
+    --color-accent-400: #60a5fa;
+    --color-accent-500: #3b82f6;
+    --color-accent-600: #2563eb;
+    --color-accent-700: #1d4ed8;
+    --color-accent-800: #1e40af;
+    --color-accent-900: #1e3a8a;
+  }
+}
+
+
+:root {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply min-h-screen bg-slate-50 text-slate-900 antialiased;
+  font-family: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+a {
+  @apply text-accent-600 transition hover:text-accent-500;
+}
+
+.section-wrapper {
+  @apply mx-auto w-full max-w-6xl px-6 py-16 md:px-8;
+}
+
+.section-title {
+  @apply text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl;
+}
+
+.section-subtitle {
+  @apply mt-3 max-w-2xl text-base text-slate-600 md:text-lg;
+}
+
+.card {
+  @apply rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-sm shadow-slate-100 backdrop-blur;
+}
+
+.badge {
+  @apply inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-accent-700;
+}
+
+button.primary {
+  @apply inline-flex items-center justify-center rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-500/30 transition hover:bg-accent-600 focus:outline-none focus:ring-2 focus:ring-accent-500/50;
+}
+
+button.secondary {
+  @apply inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-accent-400 hover:text-accent-600 focus:outline-none focus:ring-2 focus:ring-accent-500/40;
+}
+
+input,
+select,
+textarea {
+  @apply rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 shadow-sm transition focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/30;
+}
+
+label {
+  @apply text-sm font-semibold text-slate-600;
+}
+
+::selection {
+  @apply bg-accent-200;
+}
