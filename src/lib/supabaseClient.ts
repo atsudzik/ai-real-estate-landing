@@ -1,18 +1,26 @@
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient as SupabaseClientType } from "@supabase/supabase-js";
 
 const supabaseUrl =
-  process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL;
+  process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
 const supabaseKey =
-  process.env.SUPABASE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_KEY;
+  process.env.SUPABASE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_KEY ?? "";
 
-if (!supabaseUrl) {
-  throw new Error("Missing SUPABASE_URL environment variable");
-}
+let cachedClient: SupabaseClientType | null = null;
 
-if (!supabaseKey) {
-  throw new Error("Missing SUPABASE_KEY environment variable");
-}
+export const getSupabaseClient = (): SupabaseClientType => {
+  if (!cachedClient) {
+    if (!supabaseUrl) {
+      throw new Error("Missing SUPABASE_URL environment variable");
+    }
 
-export const supabaseClient = createClient(supabaseUrl, supabaseKey);
+    if (!supabaseKey) {
+      throw new Error("Missing SUPABASE_KEY environment variable");
+    }
 
-export type SupabaseClient = typeof supabaseClient;
+    cachedClient = createClient(supabaseUrl, supabaseKey);
+  }
+
+  return cachedClient;
+};
+
+export type SupabaseClient = SupabaseClientType;

@@ -3,6 +3,8 @@ import "./globals.css";
 import { AnalyticsScripts } from "@/components/analytics-scripts";
 import { SeoStructuredData } from "@/components/seo-structured-data";
 import { SeoUpdater } from "@/components/seo-updater";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 import Providers from "./providers";
 
 export const metadata: Metadata = {
@@ -62,15 +64,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerSession(authOptions);
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-slate-50 antialiased">
-        <Providers>
+        <Providers session={session}>
           <SeoUpdater />
           <SeoStructuredData />
           <AnalyticsScripts />
@@ -80,3 +83,4 @@ export default function RootLayout({
     </html>
   );
 }
+
