@@ -7,7 +7,7 @@ const supabaseKey =
 
 let cachedClient: SupabaseClientType | null = null;
 
-export const getSupabaseClient = () => {
+export const getSupabaseClient = (): SupabaseClientType => {
   if (!cachedClient) {
     if (!supabaseUrl) {
       throw new Error("Missing SUPABASE_URL environment variable");
