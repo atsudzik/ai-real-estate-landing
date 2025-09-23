@@ -2,6 +2,8 @@ export type LanguageCode = "en" | "ru" | "es" | "fr" | "it" | "de";
 
 export type FeatureIconKey = "camera" | "map" | "history" | "forecast";
 
+export type HelpCategory = "bug" | "suggestion" | "help";
+
 export interface Step {
   title: string;
   description: string;
@@ -142,6 +144,18 @@ export interface TranslationContent {
   };
   helpWidget: {
     label: string;
+    form: {
+      title: string;
+      description: string;
+      categoryLabel: string;
+      categories: { value: HelpCategory; label: string }[];
+      emailLabel: string;
+      emailPlaceholder: string;
+      messageLabel: string;
+      messagePlaceholder: string;
+      submitLabel: string;
+      successMessage: string;
+    };
   };
 }
 
@@ -423,7 +437,24 @@ export const translations: Record<LanguageCode, TranslationContent> = {
       subscribeCta: "Subscribe for updates",
     },
     helpWidget: {
-      label: "Need help? Chat with us",
+      label: "Help",
+      form: {
+        title: "How can we help?",
+        description:
+          "Send us a message and our team will get back to you within one business day.",
+        categoryLabel: "Category",
+        categories: [
+          { value: "bug", label: "Bug" },
+          { value: "suggestion", label: "Suggestion" },
+          { value: "help", label: "Help" },
+        ],
+        emailLabel: "Email",
+        emailPlaceholder: "you@example.com",
+        messageLabel: "Message",
+        messagePlaceholder: "Tell us how we can support you...",
+        submitLabel: "Send message",
+        successMessage: "Thanks! We received your request.",
+      },
     },
   },
   ru: {
@@ -694,7 +725,24 @@ export const translations: Record<LanguageCode, TranslationContent> = {
       subscribeCta: "Подписаться на обновления",
     },
     helpWidget: {
-      label: "Нужна помощь? Напишите нам",
+      label: "Помощь",
+      form: {
+        title: "Чем мы можем помочь?",
+        description:
+          "Отправьте сообщение, и мы свяжемся с вами в течение одного рабочего дня.",
+        categoryLabel: "Категория",
+        categories: [
+          { value: "bug", label: "Ошибка" },
+          { value: "suggestion", label: "Предложение" },
+          { value: "help", label: "Помощь" },
+        ],
+        emailLabel: "Электронная почта",
+        emailPlaceholder: "you@example.com",
+        messageLabel: "Сообщение",
+        messagePlaceholder: "Опишите вопрос или проблему...",
+        submitLabel: "Отправить",
+        successMessage: "Спасибо! Мы получили ваше сообщение.",
+      },
     },
   },
   es: {
@@ -965,7 +1013,24 @@ export const translations: Record<LanguageCode, TranslationContent> = {
       subscribeCta: "Suscribirme",
     },
     helpWidget: {
-      label: "¿Necesitas ayuda? Habla con nosotros",
+      label: "Ayuda",
+      form: {
+        title: "¿Cómo podemos ayudarte?",
+        description:
+          "Envíanos un mensaje y nuestro equipo responderá en un día laboral.",
+        categoryLabel: "Categoría",
+        categories: [
+          { value: "bug", label: "Error" },
+          { value: "suggestion", label: "Sugerencia" },
+          { value: "help", label: "Ayuda" },
+        ],
+        emailLabel: "Correo electrónico",
+        emailPlaceholder: "tu@email.com",
+        messageLabel: "Mensaje",
+        messagePlaceholder: "Cuéntanos en qué necesitas ayuda...",
+        submitLabel: "Enviar mensaje",
+        successMessage: "¡Gracias! Hemos recibido tu solicitud.",
+      },
     },
   },
   fr: {
@@ -1236,7 +1301,24 @@ export const translations: Record<LanguageCode, TranslationContent> = {
       subscribeCta: "S'abonner",
     },
     helpWidget: {
-      label: "Besoin d'aide ? Discutons",
+      label: "Aide",
+      form: {
+        title: "Comment pouvons-nous vous aider ?",
+        description:
+          "Envoyez-nous un message et notre équipe vous répondra sous un jour ouvré.",
+        categoryLabel: "Catégorie",
+        categories: [
+          { value: "bug", label: "Bug" },
+          { value: "suggestion", label: "Suggestion" },
+          { value: "help", label: "Aide" },
+        ],
+        emailLabel: "E-mail",
+        emailPlaceholder: "vous@example.com",
+        messageLabel: "Message",
+        messagePlaceholder: "Expliquez-nous votre demande...",
+        submitLabel: "Envoyer le message",
+        successMessage: "Merci ! Nous avons bien reçu votre demande.",
+      },
     },
   },
   it: {
@@ -1507,7 +1589,24 @@ export const translations: Record<LanguageCode, TranslationContent> = {
       subscribeCta: "Iscriviti",
     },
     helpWidget: {
-      label: "Serve aiuto? Parla con noi",
+      label: "Assistenza",
+      form: {
+        title: "Come possiamo aiutarti?",
+        description:
+          "Inviaci un messaggio e il nostro team ti risponderà entro un giorno lavorativo.",
+        categoryLabel: "Categoria",
+        categories: [
+          { value: "bug", label: "Bug" },
+          { value: "suggestion", label: "Suggerimento" },
+          { value: "help", label: "Assistenza" },
+        ],
+        emailLabel: "Email",
+        emailPlaceholder: "tu@email.com",
+        messageLabel: "Messaggio",
+        messagePlaceholder: "Raccontaci di cosa hai bisogno...",
+        submitLabel: "Invia messaggio",
+        successMessage: "Grazie! Abbiamo ricevuto la tua richiesta.",
+      },
     },
   },
   de: {
@@ -1778,7 +1877,24 @@ export const translations: Record<LanguageCode, TranslationContent> = {
       subscribeCta: "Newsletter abonnieren",
     },
     helpWidget: {
-      label: "Braucht du Hilfe? Schreib uns",
+      label: "Hilfe",
+      form: {
+        title: "Wie können wir helfen?",
+        description:
+          "Schicken Sie uns eine Nachricht und wir melden uns innerhalb eines Werktags.",
+        categoryLabel: "Kategorie",
+        categories: [
+          { value: "bug", label: "Fehler" },
+          { value: "suggestion", label: "Vorschlag" },
+          { value: "help", label: "Hilfe" },
+        ],
+        emailLabel: "E-Mail",
+        emailPlaceholder: "du@example.com",
+        messageLabel: "Nachricht",
+        messagePlaceholder: "Beschreiben Sie Ihr Anliegen...",
+        submitLabel: "Nachricht senden",
+        successMessage: "Danke! Wir haben Ihre Anfrage erhalten.",
+      },
     },
   },
 };

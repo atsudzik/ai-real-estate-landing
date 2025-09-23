@@ -22,44 +22,63 @@ export const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/90 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-4 md:px-8">
-        <Link href="/#home" className="flex items-center gap-2 text-xl font-semibold text-slate-900">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent-500 text-white shadow-md shadow-accent-500/40">
-            AI
-          </span>
-          <span className="hidden sm:inline">Skyline AI Valuator</span>
-        </Link>
+      <div className="mx-auto w-full max-w-6xl px-6 py-4 md:px-8">
+        <div className="flex w-full items-center gap-4">
+          <Link
+            href="/#home"
+            className="flex shrink-0 items-center gap-2 text-xl font-semibold text-slate-900"
+          >
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent-500 text-white shadow-md shadow-accent-500/40">
+              AI
+            </span>
+            <span className="hidden sm:inline">Skyline AI Valuator</span>
+          </Link>
 
-        <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 lg:flex">
-          {sectionLinks.map((link) => (
-            <a key={link.id} href={link.href} className="hover:text-accent-600">
-              {translations.nav[link.id as keyof typeof translations.nav]}
-            </a>
-          ))}
-          <Link href="/blog" className="hover:text-accent-600">
-            {translations.nav.blog}
-          </Link>
-        </nav>
+          <nav className="hidden flex-1 items-center justify-center gap-2 text-sm font-medium text-slate-600 lg:flex">
+            {sectionLinks.map((link) => (
+              <a
+                key={link.id}
+                href={link.href}
+                className="whitespace-nowrap rounded-full px-3 py-2 text-slate-600 transition hover:bg-accent-50 hover:text-accent-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
+              >
+                {translations.nav[link.id as keyof typeof translations.nav]}
+              </a>
+            ))}
+            <Link
+              href="/blog"
+              className="whitespace-nowrap rounded-full px-3 py-2 text-slate-600 transition hover:bg-accent-50 hover:text-accent-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
+            >
+              {translations.nav.blog}
+            </Link>
+          </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <Link href="/login" className="text-sm font-semibold text-slate-600 hover:text-accent-600">
-            {translations.auth.login}
-          </Link>
-          <Link href="/#estimate">
-            <button className="primary">
-              {translations.auth.signUp}
-            </button>
-          </Link>
-          <LanguageSelector />
+          <div className="hidden shrink-0 items-center gap-4 lg:flex">
+            <Link
+              href="/login"
+              className="rounded-full px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-accent-50 hover:text-accent-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
+            >
+              {translations.auth.login}
+            </Link>
+            <Link href="/#estimate" className="shrink-0">
+              <button className="primary">
+                {translations.auth.signUp}
+              </button>
+            </Link>
+            <div className="shrink-0">
+              <LanguageSelector />
+            </div>
+          </div>
+
+          <button
+            type="button"
+            className="ml-auto flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:border-accent-400 hover:text-accent-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500 lg:hidden"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+            aria-expanded={open}
+          >
+            {open ? <HiOutlineX className="h-5 w-5" /> : <HiOutlineMenu className="h-5 w-5" />}
+          </button>
         </div>
-
-        <button
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 lg:hidden"
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
-          {open ? <HiOutlineX className="h-5 w-5" /> : <HiOutlineMenu className="h-5 w-5" />}
-        </button>
       </div>
 
       {open ? (

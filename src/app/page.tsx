@@ -2,7 +2,6 @@ import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { HowItWorks } from "@/components/how-it-works";
 import { Features } from "@/components/features";
-import { UploadForm } from "@/components/upload-form";
 import { Pricing } from "@/components/pricing";
 import { BlogPreview } from "@/components/blog-preview";
 import { Testimonials } from "@/components/testimonials";
@@ -19,7 +18,6 @@ export default function Home() {
         <Hero />
         <HowItWorks />
         <Features />
-        <UploadForm />
         <Pricing />
         <BlogPreview />
         <Testimonials />
