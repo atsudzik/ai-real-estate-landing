@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { LanguageProvider } from "@/contexts/language-context";
 import { AnalyticsScripts } from "@/components/analytics-scripts";
 import { SeoStructuredData } from "@/components/seo-structured-data";
 import { SeoUpdater } from "@/components/seo-updater";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.skylineaivaluator.com"),
@@ -62,20 +64,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerSession(authOptions);
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-slate-50 antialiased">
-        <LanguageProvider>
+        <Providers session={session}>
           <SeoUpdater />
           <SeoStructuredData />
           <AnalyticsScripts />
           {children}
-        </LanguageProvider>
+        </Providers>
       </body>
     </html>
   );
