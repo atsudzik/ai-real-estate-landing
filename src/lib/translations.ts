@@ -69,6 +69,28 @@ export interface TranslationContent {
   auth: {
     login: string;
     signUp: string;
+    logout: string;
+    dashboard: string;
+    dashboardIntro: string;
+    forms: {
+      emailLabel: string;
+      passwordLabel: string;
+      confirmPasswordLabel: string;
+      loginButton: string;
+      signupButton: string;
+      noAccountPrompt: string;
+      haveAccountPrompt: string;
+      validations: {
+        required: string;
+        invalidEmail: string;
+        passwordMin: string;
+        passwordMismatch: string;
+      };
+      errors: {
+        default: string;
+        signup: string;
+      };
+    };
   };
   hero: {
     title: string;
@@ -198,6 +220,28 @@ export const translations: Record<LanguageCode, TranslationContent> = {
     auth: {
       login: "Log in",
       signUp: "Sign Up",
+      logout: "Log out",
+      dashboard: "Dashboard",
+      dashboardIntro: "Your personalized real estate analytics will appear here soon.",
+      forms: {
+        emailLabel: "Email",
+        passwordLabel: "Password",
+        confirmPasswordLabel: "Confirm password",
+        loginButton: "Log in",
+        signupButton: "Create account",
+        noAccountPrompt: "Don't have an account?",
+        haveAccountPrompt: "Already have an account?",
+        validations: {
+          required: "This field is required.",
+          invalidEmail: "Enter a valid email address.",
+          passwordMin: "Password must be at least 8 characters.",
+          passwordMismatch: "Passwords must match.",
+        },
+        errors: {
+          default: "Unable to sign in. Check your credentials and try again.",
+          signup: "Unable to create your account. Please try again.",
+        },
+      },
     },
     hero: {
       title: "AI-Powered Apartment Price Estimator",
@@ -486,6 +530,28 @@ export const translations: Record<LanguageCode, TranslationContent> = {
     auth: {
       login: "Войти",
       signUp: "Регистрация",
+      logout: "Выйти",
+      dashboard: "Панель",
+      dashboardIntro: "Здесь скоро появятся ваши персональные аналитические данные по недвижимости.",
+      forms: {
+        emailLabel: "Электронная почта",
+        passwordLabel: "Пароль",
+        confirmPasswordLabel: "Подтвердите пароль",
+        loginButton: "Войти",
+        signupButton: "Создать аккаунт",
+        noAccountPrompt: "Нет аккаунта?",
+        haveAccountPrompt: "Уже есть аккаунт?",
+        validations: {
+          required: "Поле обязательно для заполнения.",
+          invalidEmail: "Введите корректный email.",
+          passwordMin: "Пароль должен содержать не менее 8 символов.",
+          passwordMismatch: "Пароли должны совпадать.",
+        },
+        errors: {
+          default: "Не удалось войти. Проверьте данные и попробуйте снова.",
+          signup: "Не удалось создать аккаунт. Попробуйте снова.",
+        },
+      },
     },
     hero: {
       title: "AI-сервис оценки стоимости квартиры",
@@ -774,6 +840,28 @@ export const translations: Record<LanguageCode, TranslationContent> = {
     auth: {
       login: "Iniciar sesión",
       signUp: "Crear cuenta",
+      logout: "Cerrar sesión",
+      dashboard: "Panel",
+      dashboardIntro: "Muy pronto verás aquí tus analíticas inmobiliarias personalizadas.",
+      forms: {
+        emailLabel: "Correo electrónico",
+        passwordLabel: "Contraseña",
+        confirmPasswordLabel: "Confirmar contraseña",
+        loginButton: "Iniciar sesión",
+        signupButton: "Crear cuenta",
+        noAccountPrompt: "¿No tienes cuenta?",
+        haveAccountPrompt: "¿Ya tienes cuenta?",
+        validations: {
+          required: "Este campo es obligatorio.",
+          invalidEmail: "Introduce un correo electrónico válido.",
+          passwordMin: "La contraseña debe tener al menos 8 caracteres.",
+          passwordMismatch: "Las contraseñas deben coincidir.",
+        },
+        errors: {
+          default: "No pudimos iniciar sesión. Revisa tus datos e inténtalo de nuevo.",
+          signup: "No pudimos crear tu cuenta. Inténtalo otra vez.",
+        },
+      },
     },
     hero: {
       title: "Estimador de precios inmobiliarios con IA",
@@ -1062,6 +1150,28 @@ export const translations: Record<LanguageCode, TranslationContent> = {
     auth: {
       login: "Connexion",
       signUp: "Créer un compte",
+      logout: "Se déconnecter",
+      dashboard: "Tableau de bord",
+      dashboardIntro: "Vos analyses immobilières personnalisées apparaîtront bientôt ici.",
+      forms: {
+        emailLabel: "Adresse e-mail",
+        passwordLabel: "Mot de passe",
+        confirmPasswordLabel: "Confirmer le mot de passe",
+        loginButton: "Connexion",
+        signupButton: "Créer un compte",
+        noAccountPrompt: "Pas encore de compte ?",
+        haveAccountPrompt: "Vous avez déjà un compte ?",
+        validations: {
+          required: "Ce champ est obligatoire.",
+          invalidEmail: "Saisissez une adresse e-mail valide.",
+          passwordMin: "Le mot de passe doit contenir au moins 8 caractères.",
+          passwordMismatch: "Les mots de passe doivent correspondre.",
+        },
+        errors: {
+          default: "Connexion impossible. Vérifiez vos identifiants et réessayez.",
+          signup: "Impossible de créer votre compte. Veuillez réessayer.",
+        },
+      },
     },
     hero: {
       title: "Estimateur immobilier alimenté par l'IA",
@@ -1350,6 +1460,28 @@ export const translations: Record<LanguageCode, TranslationContent> = {
     auth: {
       login: "Accedi",
       signUp: "Registrati",
+      logout: "Esci",
+      dashboard: "Dashboard",
+      dashboardIntro: "Qui troverai presto le tue analisi immobiliari personalizzate.",
+      forms: {
+        emailLabel: "Email",
+        passwordLabel: "Password",
+        confirmPasswordLabel: "Conferma password",
+        loginButton: "Accedi",
+        signupButton: "Crea account",
+        noAccountPrompt: "Non hai un account?",
+        haveAccountPrompt: "Hai già un account?",
+        validations: {
+          required: "Questo campo è obbligatorio.",
+          invalidEmail: "Inserisci un indirizzo email valido.",
+          passwordMin: "La password deve contenere almeno 8 caratteri.",
+          passwordMismatch: "Le password devono coincidere.",
+        },
+        errors: {
+          default: "Accesso non riuscito. Controlla i dati e riprova.",
+          signup: "Impossibile creare l'account. Riprova.",
+        },
+      },
     },
     hero: {
       title: "Stimatore immobiliare potenziato dall'IA",
@@ -1638,6 +1770,28 @@ export const translations: Record<LanguageCode, TranslationContent> = {
     auth: {
       login: "Anmelden",
       signUp: "Registrieren",
+      logout: "Abmelden",
+      dashboard: "Dashboard",
+      dashboardIntro: "Hier erscheinen bald deine persönlichen Immobilienanalysen.",
+      forms: {
+        emailLabel: "E-Mail-Adresse",
+        passwordLabel: "Passwort",
+        confirmPasswordLabel: "Passwort bestätigen",
+        loginButton: "Anmelden",
+        signupButton: "Konto erstellen",
+        noAccountPrompt: "Noch kein Konto?",
+        haveAccountPrompt: "Bereits ein Konto?",
+        validations: {
+          required: "Dieses Feld ist erforderlich.",
+          invalidEmail: "Bitte eine gültige E-Mail-Adresse eingeben.",
+          passwordMin: "Das Passwort muss mindestens 8 Zeichen lang sein.",
+          passwordMismatch: "Die Passwörter müssen übereinstimmen.",
+        },
+        errors: {
+          default: "Anmeldung nicht möglich. Bitte prüfe deine Daten und versuche es erneut.",
+          signup: "Konto konnte nicht erstellt werden. Bitte versuche es erneut.",
+        },
+      },
     },
     hero: {
       title: "KI-gestützter Wohnungsbewertungsrechner",

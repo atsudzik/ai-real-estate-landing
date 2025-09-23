@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { LanguageProvider } from "@/contexts/language-context";
 import { AnalyticsScripts } from "@/components/analytics-scripts";
 import { SeoStructuredData } from "@/components/seo-structured-data";
 import { SeoUpdater } from "@/components/seo-updater";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.skylineaivaluator.com"),
@@ -70,12 +70,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-slate-50 antialiased">
-        <LanguageProvider>
+        <Providers>
           <SeoUpdater />
           <SeoStructuredData />
           <AnalyticsScripts />
           {children}
-        </LanguageProvider>
+        </Providers>
       </body>
     </html>
   );
